@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.hbk.prj.member.service.MemberMapper">
+	<select id="memberList" resultType="co.hbk.prj.member.vo.MemberVO">
+		SELECT * FROM MEMBER ORDER BY 1
+	</select>
+	
+	<select id="memberSelect" parameterType="co.hbk.prj.member.vo.MemberVO" resultType="co.hbk.prj.member.vo.MemberVO">
+		SELECT * FROM MEMBER WHERE ID=#{id}
+		<if test="password!=null">
+			AND PASSWORD=#{password}
+		</if>
+	</select>
+	
+	<insert id="memberInsert" parameterType="co.hbk.prj.member.vo.MemberVO">
+		INSERT INTO MEMBER VALUES (#{id}, #{password}, #{name}, #{tel}, #{address}, #{author})
+	</insert>
+	
+	<delete id="memberDelete" parameterType="co.hbk.prj.member.vo.MemberVO">
+		DELETE FROM MEMBER WHERE ID=#{id}
+	</delete>
+	
+	<update id="memberUpdate" parameterType="co.hbk.prj.member.vo.MemberVO">
+		UPDATE MEMBER
+		<if test="password!=null">SET PASSWORD=#{password}</if>
+		<if test="name!=null">SET NAME=#{name}</if>
+		<if test="tel!=null">SET TEL=#{tel}</if>
+		<if test="address!=null">SET ADDRESS=#{address}</if>
+		<if test="author!=null">SET AUTHOR=#{author}</if>
+		WHERE ID=#{id}
+	</update>
+	
+	<select id="isIdCheck" resultType="boolean" parameterType="String">
+		SELECT CASE WHEN COUNT(*) = 1 THEN 0 ELSE 1 END AS T
+		FROM MEMBER WHERE ID=#{id}
+	</select>
+</mapper>
