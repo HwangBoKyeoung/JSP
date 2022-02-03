@@ -25,7 +25,7 @@
 						<li><a href="logout.do">LogOut</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="#">Contact</a></li>
+				<li><a href="noticeList.do">Notice</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Product</a></li>
 				<li><a href="#">Service</a></li>
