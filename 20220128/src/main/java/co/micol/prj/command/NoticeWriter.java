@@ -22,7 +22,9 @@ public class NoticeWriter implements Command {
 		NoticeService noticeDao = new NoticeServiceImpl();
 		NoticeVO vo = new NoticeVO();
 		vo.setNoticeWriter(writer);
-		vo.setNoticeDate(Date.valueOf(date));
+		if(date!=null) {
+			vo.setNoticeDate(Date.valueOf(date));
+		}
 		vo.setNoticeTitle(title);
 		vo.setNoticeSubject(subject);
 		
