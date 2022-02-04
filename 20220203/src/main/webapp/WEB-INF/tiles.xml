@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+
+<!-- name=>layout의 이름, template=>저장위치 -->
+<!-- title=> 탭에 있는 명칭 -->
+<tiles-definitions>
+	<definition name="myweb.layout" template="/WEB-INF/views/layout/layout.jsp">
+		<put-attribute name="title" value="My Web Site" />
+		<put-attribute name="header" value="/WEB-INF/views/layout/hr.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="WILDCARD:*/*" extends="myweb.layout">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
